@@ -1,0 +1,28 @@
+<div class="page-content" style="max-width: 480px;">
+  <h1>{{ 'customers.login' | t }}</h1>
+  {% form 'customer_login' %}
+    {{ form.errors | default_errors }}
+    <p><label for="CustomerEmail">{{ 'customers.email' | t }}</label><br>
+      <input type="email" name="customer[email]" id="CustomerEmail" autocomplete="email" style="width:100%; padding: 12px 16px; border-radius: 8px; border: 1.5px solid rgba(43,33,24,0.2);"></p>
+    <p><label for="CustomerPassword">{{ 'customers.password' | t }}</label><br>
+      <input type="password" name="customer[password]" id="CustomerPassword" autocomplete="current-password" style="width:100%; padding: 12px 16px; border-radius: 8px; border: 1.5px solid rgba(43,33,24,0.2);"></p>
+    <button type="submit" class="btn">{{ 'customers.login' | t }}</button>
+    <p style="margin-top: 16px;">
+      <a href="#recover" onclick="document.getElementById('RecoverForm').style.display='block'; return false;">{{ 'customers.forgot_password' | t }}</a>
+      &middot; <a href="{{ routes.account_register_url }}">{{ 'customers.create_account' | t }}</a>
+    </p>
+  {% endform %}
+
+  <div id="RecoverForm" style="display:none; margin-top: 24px;">
+    <h3>{{ 'customers.reset_password' | t }}</h3>
+    {% form 'recover_customer_password' %}
+      {{ form.errors | default_errors }}
+      {%- if form.posted_successfully? -%}
+        <p>{{ 'customers.recover_sent' | t }}</p>
+      {%- endif -%}
+      <p><label for="RecoverEmail">{{ 'customers.email' | t }}</label><br>
+        <input type="email" name="email" id="RecoverEmail" style="width:100%; padding: 12px 16px; border-radius: 8px; border: 1.5px solid rgba(43,33,24,0.2);"></p>
+      <button type="submit" class="btn btn--ghost">{{ 'customers.submit' | t }}</button>
+    {% endform %}
+  </div>
+</div>

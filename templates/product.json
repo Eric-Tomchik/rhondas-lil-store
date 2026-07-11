@@ -1,0 +1,19 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "a1": { "type": "assurance", "settings": { "icon": "truck", "text": "Free US shipping on orders over $50" } },
+        "a2": { "type": "assurance", "settings": { "icon": "return", "text": "30-day hassle-free returns" } },
+        "a3": { "type": "assurance", "settings": { "icon": "shield", "text": "Safe & secure checkout" } }
+      },
+      "block_order": ["a1", "a2", "a3"],
+      "settings": {}
+    },
+    "recommend": {
+      "type": "featured-collection",
+      "settings": { "kicker": "You might also like", "heading": "Keep browsing", "products_to_show": 4, "show_view_all": false, "soft_background": true }
+    }
+  },
+  "order": ["main", "recommend"]
+}

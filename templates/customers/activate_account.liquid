@@ -1,0 +1,11 @@
+<div class="page-content" style="max-width: 480px;">
+  <h1>{{ 'customers.activate_account' | t }}</h1>
+  {% form 'activate_customer_password' %}
+    {{ form.errors | default_errors }}
+    <p><label for="ActivatePassword">{{ 'customers.new_password' | t }}</label><br>
+      <input type="password" name="customer[password]" id="ActivatePassword" autocomplete="new-password" style="width:100%; padding: 12px 16px; border-radius: 8px; border: 1.5px solid rgba(43,33,24,0.2);"></p>
+    <p><label for="ActivatePasswordConfirm">{{ 'customers.confirm_password' | t }}</label><br>
+      <input type="password" name="customer[password_confirmation]" id="ActivatePasswordConfirm" autocomplete="new-password" style="width:100%; padding: 12px 16px; border-radius: 8px; border: 1.5px solid rgba(43,33,24,0.2);"></p>
+    <button type="submit" class="btn">{{ 'customers.submit' | t }}</button>
+  {% endform %}
+</div>

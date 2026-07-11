@@ -1,0 +1,57 @@
+<section class="section {% if section.settings.soft_background %}section--soft{% endif %}">
+  <div class="page-width">
+    {%- if section.settings.kicker != blank -%}
+      <span class="section-kicker">{{ section.settings.kicker }}</span>
+    {%- endif -%}
+    <h2 class="section-heading">{{ section.settings.heading }}</h2>
+    {%- if section.settings.subheading != blank -%}
+      <p class="section-sub">{{ section.settings.subheading }}</p>
+    {%- else -%}
+      <div style="margin-bottom: 40px;"></div>
+    {%- endif -%}
+
+    <div class="product-grid">
+      {%- if section.settings.collection != blank -%}
+        {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
+          {% render 'product-card', product: product %}
+        {%- endfor -%}
+      {%- else -%}
+        {%- for i in (1..section.settings.products_to_show) -%}
+          <div class="product-card">
+            <div class="product-card__media">
+              <div class="placeholder-media">{% render 'icon', icon: 'placeholder-product' %}</div>
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__title">{{ 'products.example_title' | t }}</h3>
+              <div class="product-card__price">$19.99</div>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.show_view_all and section.settings.collection != blank -%}
+      <div class="section__footer">
+        <a href="{{ section.settings.collection.url }}" class="btn btn--ghost">{{ 'sections.featured_collection.view_all' | t }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured collection",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Kicker text", "default": "Customer favorites" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Bestsellers" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading" },
+    { "type": "collection", "id": "collection", "label": "Collection" },
+    { "type": "range", "id": "products_to_show", "label": "Products to show", "min": 4, "max": 12, "step": 4, "default": 8 },
+    { "type": "checkbox", "id": "show_view_all", "label": "Show 'View all' button", "default": true },
+    { "type": "checkbox", "id": "soft_background", "label": "Soft background", "default": false }
+  ],
+  "presets": [
+    { "name": "Featured collection" }
+  ]
+}
+{% endschema %}

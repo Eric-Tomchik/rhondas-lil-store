@@ -1,0 +1,38 @@
+{%- comment -%}
+  Renders a product card. Accepts: product (product object)
+{%- endcomment -%}
+<div class="product-card">
+  <div class="product-card__media">
+    {%- if product.featured_image != blank -%}
+      <img
+        src="{{ product.featured_image | image_url: width: 600 }}"
+        srcset="{{ product.featured_image | image_url: width: 400 }} 400w, {{ product.featured_image | image_url: width: 600 }} 600w, {{ product.featured_image | image_url: width: 800 }} 800w"
+        sizes="(max-width: 760px) 50vw, 25vw"
+        alt="{{ product.featured_image.alt | default: product.title | escape }}"
+        loading="lazy"
+        width="600" height="600">
+    {%- else -%}
+      <div class="placeholder-media">{% render 'icon', icon: 'placeholder-product' %}</div>
+    {%- endif -%}
+    {%- if product.compare_at_price > product.price -%}
+      <span class="product-card__badge">{{ 'products.sale' | t }}</span>
+    {%- elsif product.available == false -%}
+      <span class="product-card__badge">{{ 'products.sold_out' | t }}</span>
+    {%- endif -%}
+  </div>
+  <div class="product-card__info">
+    <h3 class="product-card__title">
+      <a href="{{ product.url }}">{{ product.title }}</a>
+    </h3>
+    <div class="product-card__price">
+      {%- if product.compare_at_price > product.price -%}
+        <s>{{ product.compare_at_price | money }}</s>
+      {%- endif -%}
+      {%- if product.price_varies -%}
+        {{ 'products.from_price' | t: price: product.price_min | money }}
+      {%- else -%}
+        {{ product.price | money }}
+      {%- endif -%}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="page-content" style="max-width: 480px;">
+  <h1>{{ 'customers.create_account' | t }}</h1>
+  {% form 'create_customer' %}
+    {{ form.errors | default_errors }}
+    <p><label for="RegFirst">{{ 'customers.first_name' | t }}</label><br>
+      <input type="text" name="customer[first_name]" id="RegFirst" autocomplete="given-name" style="width:100%; padding: 12px 16px; border-radius: 8px; border: 1.5px solid rgba(43,33,24,0.2);"></p>
+    <p><label for="RegLast">{{ 'customers.last_name' | t }}</label><br>
+      <input type="text" name="customer[last_name]" id="RegLast" autocomplete="family-name" style="width:100%; padding: 12px 16px; border-radius: 8px; border: 1.5px solid rgba(43,33,24,0.2);"></p>
+    <p><label for="RegEmail">{{ 'customers.email' | t }}</label><br>
+      <input type="email" name="customer[email]" id="RegEmail" autocomplete="email" style="width:100%; padding: 12px 16px; border-radius: 8px; border: 1.5px solid rgba(43,33,24,0.2);"></p>
+    <p><label for="RegPassword">{{ 'customers.password' | t }}</label><br>
+      <input type="password" name="customer[password]" id="RegPassword" autocomplete="new-password" style="width:100%; padding: 12px 16px; border-radius: 8px; border: 1.5px solid rgba(43,33,24,0.2);"></p>
+    <button type="submit" class="btn">{{ 'customers.submit' | t }}</button>
+  {% endform %}
+</div>

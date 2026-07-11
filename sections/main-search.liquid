@@ -1,0 +1,49 @@
+<div class="page-width section">
+  <header class="collection-header" style="padding-top: 0;">
+    <h1>{{ 'search.title' | t }}</h1>
+  </header>
+
+  <form action="{{ routes.search_url }}" method="get" role="search" class="search-form">
+    <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'search.placeholder' | t }}" aria-label="{{ 'search.placeholder' | t }}">
+    <button type="submit" class="btn">{{ 'search.submit' | t }}</button>
+  </form>
+
+  {%- if search.performed -%}
+    {%- if search.results_count > 0 -%}
+      {%- paginate search.results by 16 -%}
+        <p class="collection-toolbar__count" style="text-align:center; margin-bottom: 28px;">
+          {{ 'search.results_count' | t: count: search.results_count, terms: search.terms }}
+        </p>
+        <div class="product-grid">
+          {%- for item in search.results -%}
+            {%- if item.object_type == 'product' -%}
+              {% render 'product-card', product: item %}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+        {%- if paginate.pages > 1 -%}
+          <nav class="pagination" aria-label="Pagination">
+            {%- if paginate.previous -%}<a href="{{ paginate.previous.url }}">&larr;</a>{%- endif -%}
+            {%- for part in paginate.parts -%}
+              {%- if part.is_link -%}<a href="{{ part.url }}">{{ part.title }}</a>
+              {%- elsif part.title == paginate.current_page -%}<span class="current">{{ part.title }}</span>
+              {%- else -%}<span>{{ part.title }}</span>{%- endif -%}
+            {%- endfor -%}
+            {%- if paginate.next -%}<a href="{{ paginate.next.url }}">&rarr;</a>{%- endif -%}
+          </nav>
+        {%- endif -%}
+      {%- endpaginate -%}
+    {%- else -%}
+      <div class="search-page__empty">
+        <h2>{{ 'search.no_results' | t: terms: search.terms }}</h2>
+      </div>
+    {%- endif -%}
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Search page",
+  "settings": []
+}
+{% endschema %}

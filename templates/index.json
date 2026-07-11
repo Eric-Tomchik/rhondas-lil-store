@@ -1,0 +1,66 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "blocks": {
+        "perk1": { "type": "perk", "settings": { "text": "Free US shipping over $50" } },
+        "perk2": { "type": "perk", "settings": { "text": "30-day easy returns" } },
+        "perk3": { "type": "perk", "settings": { "text": "Secure checkout" } }
+      },
+      "block_order": ["perk1", "perk2", "perk3"],
+      "settings": {}
+    },
+    "trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "t1": { "type": "item", "settings": { "icon": "truck", "title": "Fast, tracked shipping", "subtitle": "Every order, every time" } },
+        "t2": { "type": "item", "settings": { "icon": "return", "title": "30-day returns", "subtitle": "No-fuss refunds" } },
+        "t3": { "type": "item", "settings": { "icon": "shield", "title": "Secure checkout", "subtitle": "SSL-protected payments" } },
+        "t4": { "type": "item", "settings": { "icon": "chat", "title": "Friendly support", "subtitle": "Real replies, fast" } }
+      },
+      "block_order": ["t1", "t2", "t3", "t4"],
+      "settings": {}
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": { "kicker": "Customer favorites", "heading": "Bestsellers", "products_to_show": 8, "show_view_all": true }
+    },
+    "categories": {
+      "type": "collection-list",
+      "blocks": {
+        "c1": { "type": "collection", "settings": {} },
+        "c2": { "type": "collection", "settings": {} },
+        "c3": { "type": "collection", "settings": {} }
+      },
+      "block_order": ["c1", "c2", "c3"],
+      "settings": {}
+    },
+    "values": {
+      "type": "value-props",
+      "blocks": {
+        "v1": { "type": "prop", "settings": { "icon": "sparkle", "title": "Curated with care", "text": "Every product is hand-picked and quality-checked before it earns a spot in the store." } },
+        "v2": { "type": "prop", "settings": { "icon": "tag", "title": "Fair little prices", "text": "Great finds shouldn't break the bank. We keep prices friendly, always." } },
+        "v3": { "type": "prop", "settings": { "icon": "truck", "title": "Shipped with love", "text": "Orders are processed fast and tracked from our door to yours." } }
+      },
+      "block_order": ["v1", "v2", "v3"],
+      "settings": {}
+    },
+    "new_arrivals": {
+      "type": "featured-collection",
+      "settings": { "kicker": "Just landed", "heading": "New arrivals", "products_to_show": 4, "show_view_all": true }
+    },
+    "banner": { "type": "image-banner", "settings": {} },
+    "reviews": {
+      "type": "testimonials",
+      "blocks": {
+        "r1": { "type": "testimonial", "settings": { "quote": "Shipping was quick and the quality blew me away. This is my new go-to gift shop!", "author": "Jessica M.", "detail": "Verified buyer" } },
+        "r2": { "type": "testimonial", "settings": { "quote": "Ordered twice already. Everything arrives exactly as pictured — love this little store.", "author": "Danielle R.", "detail": "Repeat customer" } },
+        "r3": { "type": "testimonial", "settings": { "quote": "Customer service actually answered me the same day. That alone earned my loyalty.", "author": "Marcus T.", "detail": "Verified buyer" } }
+      },
+      "block_order": ["r1", "r2", "r3"],
+      "settings": {}
+    },
+    "newsletter": { "type": "newsletter", "settings": {} }
+  },
+  "order": ["hero", "trust", "featured", "categories", "values", "new_arrivals", "banner", "reviews", "newsletter"]
+}

@@ -1,0 +1,7 @@
+<div class="page-content">
+  <h1>{{ 'customers.addresses' | t }}</h1>
+  {%- for address in customer.addresses -%}
+    <p>{{ address | format_address }}</p>
+  {%- endfor -%}
+  <a href="{{ routes.account_url }}" class="btn btn--ghost">{{ 'customers.back_to_account' | t }}</a>
+</div>

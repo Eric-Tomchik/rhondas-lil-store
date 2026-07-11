@@ -1,0 +1,135 @@
+<div class="page-width">
+  <div class="product-page" data-product-form>
+    <div class="product-gallery" data-gallery>
+      <div class="product-gallery__main">
+        {%- if product.featured_image != blank -%}
+          <img
+            data-main-image
+            src="{{ product.featured_image | image_url: width: 1000 }}"
+            alt="{{ product.featured_image.alt | default: product.title | escape }}"
+            width="1000" height="1000">
+        {%- else -%}
+          <div class="placeholder-media">{% render 'icon', icon: 'placeholder-product' %}</div>
+        {%- endif -%}
+      </div>
+      {%- if product.images.size > 1 -%}
+        <div class="product-gallery__thumbs">
+          {%- for image in product.images -%}
+            <button
+              type="button"
+              data-thumb
+              data-src="{{ image | image_url: width: 1000 }}"
+              class="{% if forloop.first %}is-active{% endif %}"
+              aria-label="{{ 'products.view_image' | t: index: forloop.index }}">
+              <img src="{{ image | image_url: width: 160 }}" alt="{{ image.alt | escape }}" loading="lazy" width="74" height="74">
+            </button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="product-info">
+      {%- if section.settings.show_vendor and product.vendor != blank -%}
+        <div class="product-info__vendor">{{ product.vendor }}</div>
+      {%- endif -%}
+      <h1 class="product-info__title">{{ product.title }}</h1>
+
+      <div class="product-info__price">
+        <s data-compare-price {% unless product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}hidden{% endunless %}>
+          {{- product.selected_or_first_available_variant.compare_at_price | money -}}
+        </s>
+        <span data-price>{{ product.selected_or_first_available_variant.price | money }}</span>
+        {%- if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price -%}
+          <span class="product-info__badge">{{ 'products.sale' | t }}</span>
+        {%- endif -%}
+      </div>
+
+      {%- if product.description != blank -%}
+        <div class="product-info__desc">{{ product.description }}</div>
+      {%- endif -%}
+
+      {% form 'product', product %}
+        {%- unless product.has_only_default_variant -%}
+          <div class="variant-selects">
+            {%- for option in product.options_with_values -%}
+              <div>
+                <label for="Option-{{ section.id }}-{{ forloop.index0 }}">{{ option.name }}</label>
+                <select id="Option-{{ section.id }}-{{ forloop.index0 }}" data-option-select>
+                  {%- for value in option.values -%}
+                    <option value="{{ value | escape }}" {% if option.selected_value == value %}selected{% endif %}>{{ value }}</option>
+                  {%- endfor -%}
+                </select>
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endunless -%}
+
+        <div class="quantity-input">
+          <label for="Quantity-{{ section.id }}">{{ 'products.quantity' | t }}</label>
+          <input type="number" id="Quantity-{{ section.id }}" name="quantity" min="1" value="1">
+        </div>
+
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+        <div class="product-form__buttons">
+          <button
+            type="submit"
+            name="add"
+            class="btn"
+            data-add-to-cart
+            data-text-add="{{ 'products.add_to_cart' | t }}"
+            data-text-soldout="{{ 'products.sold_out' | t }}"
+            data-text-unavailable="{{ 'products.unavailable' | t }}"
+            {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %}>
+            {%- if product.selected_or_first_available_variant.available -%}
+              {{ 'products.add_to_cart' | t }}
+            {%- else -%}
+              {{ 'products.sold_out' | t }}
+            {%- endif -%}
+          </button>
+          {{ form | payment_button }}
+        </div>
+      {% endform %}
+
+      <ul class="product-info__assurances">
+        {%- for block in section.blocks -%}
+          <li {{ block.shopify_attributes }}>{% render 'icon', icon: block.settings.icon %}{{ block.settings.text }}</li>
+        {%- endfor -%}
+      </ul>
+
+      <script type="application/json" data-product-json>{{ product | json }}</script>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product page",
+  "settings": [
+    { "type": "checkbox", "id": "show_vendor", "label": "Show vendor", "default": false }
+  ],
+  "blocks": [
+    {
+      "type": "assurance",
+      "name": "Assurance",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "truck", "label": "Truck" },
+            { "value": "shield", "label": "Shield" },
+            { "value": "return", "label": "Returns" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "chat", "label": "Chat" }
+          ],
+          "default": "truck"
+        },
+        { "type": "text", "id": "text", "label": "Text", "default": "Free US shipping on orders over $50" }
+      ]
+    }
+  ],
+  "max_blocks": 4
+}
+{% endschema %}

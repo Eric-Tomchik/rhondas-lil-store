@@ -1,0 +1,97 @@
+{
+  "general": {
+    "skip_to_content": "Skip to content",
+    "menu": "Menu",
+    "search": "Search",
+    "account": "Account",
+    "cart": "Cart",
+    "all_rights_reserved": "All rights reserved.",
+    "continue_shopping": "Continue shopping",
+    "404_title": "Oops — that page wandered off",
+    "404_text": "The page you're looking for doesn't exist. But the good stuff is just a click away.",
+    "password_title": "Something lovely is coming",
+    "password_text": "We're putting the finishing touches on the store. Check back soon!",
+    "password_placeholder": "Password",
+    "password_submit": "Enter"
+  },
+  "products": {
+    "add_to_cart": "Add to cart",
+    "sold_out": "Sold out",
+    "unavailable": "Unavailable",
+    "sale": "Sale",
+    "quantity": "Quantity",
+    "from_price": "From {{ price }}",
+    "example_title": "Example product",
+    "view_image": "View image {{ index }}"
+  },
+  "collections": {
+    "product_count": "{{ count }} products",
+    "sort_by": "Sort by",
+    "empty": "No products here yet — check back soon!",
+    "browse_all": "Browse all products",
+    "list_title": "All collections"
+  },
+  "cart": {
+    "title": "Your cart",
+    "product": "Product",
+    "quantity": "Quantity",
+    "total": "Total",
+    "subtotal": "Subtotal",
+    "taxes_note": "Shipping and taxes calculated at checkout.",
+    "update": "Update cart",
+    "checkout": "Check out",
+    "remove": "Remove",
+    "empty": "Your cart is feeling a little empty",
+    "empty_text": "Let's fix that — there are so many lovely finds waiting for you.",
+    "continue_shopping": "Start shopping"
+  },
+  "search": {
+    "title": "Search the store",
+    "placeholder": "What are you looking for?",
+    "submit": "Search",
+    "results_count": "{{ count }} results for \"{{ terms }}\"",
+    "no_results": "Nothing found for \"{{ terms }}\" — try another search!"
+  },
+  "sections": {
+    "featured_collection": {
+      "view_all": "View all"
+    },
+    "collection_list": {
+      "example": "Collection"
+    },
+    "newsletter": {
+      "success": "You're on the list! 🎉",
+      "placeholder": "Your email address"
+    }
+  },
+  "customers": {
+    "login": "Log in",
+    "log_out": "Log out",
+    "email": "Email",
+    "password": "Password",
+    "new_password": "New password",
+    "confirm_password": "Confirm password",
+    "forgot_password": "Forgot your password?",
+    "reset_password": "Reset your password",
+    "recover_sent": "If that email is registered, we've sent a reset link.",
+    "create_account": "Create account",
+    "first_name": "First name",
+    "last_name": "Last name",
+    "submit": "Submit",
+    "account": "My account",
+    "order_history": "Order history",
+    "order": "Order",
+    "date": "Date",
+    "status": "Status",
+    "no_orders": "You haven't placed any orders yet.",
+    "back_to_account": "Back to account",
+    "addresses": "Addresses",
+    "activate_account": "Activate account"
+  },
+  "gift_cards": {
+    "title": "Gift card from {{ shop }}",
+    "subtitle": "Here's your gift card!",
+    "expired": "This gift card has expired.",
+    "shop_link": "Start shopping"
+  }
+}

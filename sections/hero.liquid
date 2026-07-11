@@ -1,0 +1,78 @@
+<section class="hero">
+  <div class="hero__inner">
+    <div class="hero__content">
+      {%- if section.settings.kicker != blank -%}
+        <span class="hero__kicker">{{ section.settings.kicker }}</span>
+      {%- endif -%}
+      <h1 class="hero__title">{{ section.settings.heading }}</h1>
+      {%- if section.settings.text != blank -%}
+        <p class="hero__text">{{ section.settings.text }}</p>
+      {%- endif -%}
+      <div class="hero__ctas">
+        {%- if section.settings.button_label != blank -%}
+          <a href="{{ section.settings.button_link | default: routes.all_products_collection_url }}" class="btn">{{ section.settings.button_label }}</a>
+        {%- endif -%}
+        {%- if section.settings.button_label_2 != blank -%}
+          <a href="{{ section.settings.button_link_2 | default: routes.collections_url }}" class="btn btn--ghost">{{ section.settings.button_label_2 }}</a>
+        {%- endif -%}
+      </div>
+      <ul class="hero__perks">
+        {%- for block in section.blocks -%}
+          <li {{ block.shopify_attributes }}>{% render 'icon', icon: 'check' %}{{ block.settings.text }}</li>
+        {%- endfor -%}
+      </ul>
+    </div>
+    <div class="hero__media">
+      {%- if section.settings.image != blank -%}
+        <img
+          src="{{ section.settings.image | image_url: width: 900 }}"
+          srcset="{{ section.settings.image | image_url: width: 600 }} 600w, {{ section.settings.image | image_url: width: 900 }} 900w, {{ section.settings.image | image_url: width: 1200 }} 1200w"
+          sizes="(max-width: 860px) 100vw, 50vw"
+          alt="{{ section.settings.image.alt | escape }}"
+          width="900" height="990" loading="eager">
+      {%- else -%}
+        <div class="hero__placeholder">{% render 'icon', icon: 'placeholder-product' %}</div>
+      {%- endif -%}
+      {%- if section.settings.badge_text != blank -%}
+        <div class="hero__badge">{% render 'icon', icon: 'heart' %}{{ section.settings.badge_text }}</div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Kicker text", "default": "New finds every week" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Little finds that make life <em>lovelier</em>" },
+    { "type": "textarea", "id": "text", "label": "Subheading", "default": "Hand-picked home, lifestyle, and gift favorites — curated with love, shipped to your door, and always easy on the wallet." },
+    { "type": "text", "id": "button_label", "label": "Primary button label", "default": "Shop bestsellers" },
+    { "type": "url", "id": "button_link", "label": "Primary button link" },
+    { "type": "text", "id": "button_label_2", "label": "Secondary button label", "default": "Browse collections" },
+    { "type": "url", "id": "button_link_2", "label": "Secondary button link" },
+    { "type": "image_picker", "id": "image", "label": "Hero image" },
+    { "type": "text", "id": "badge_text", "label": "Floating badge text", "default": "Loved by 2,000+ happy shoppers" }
+  ],
+  "blocks": [
+    {
+      "type": "perk",
+      "name": "Perk",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Perk text", "default": "Free US shipping over $50" }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Hero",
+      "blocks": [
+        { "type": "perk", "settings": { "text": "Free US shipping over $50" } },
+        { "type": "perk", "settings": { "text": "30-day easy returns" } },
+        { "type": "perk", "settings": { "text": "Secure checkout" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,40 @@
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>
+      <div class="site-footer__brand">{{ shop.name }}</div>
+      <p>{{ section.settings.tagline }}</p>
+    </div>
+    <div>
+      <h4>{{ section.settings.menu_title }}</h4>
+      <ul>
+        {%- for link in section.settings.menu.links -%}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {%- endfor -%}
+      </ul>
+    </div>
+    <div>
+      <h4>{{ section.settings.menu_title_2 }}</h4>
+      <ul>
+        {%- for link in section.settings.menu_2.links -%}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+  <div class="site-footer__bottom">
+    &copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. {{ 'general.all_rights_reserved' | t }} &middot; {{ powered_by_link }}
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    { "type": "textarea", "id": "tagline", "label": "Tagline", "default": "A cozy little corner of the internet, full of hand-picked finds that make everyday life a bit more delightful." },
+    { "type": "text", "id": "menu_title", "label": "First menu title", "default": "Shop" },
+    { "type": "link_list", "id": "menu", "label": "First menu", "default": "main-menu" },
+    { "type": "text", "id": "menu_title_2", "label": "Second menu title", "default": "Help" },
+    { "type": "link_list", "id": "menu_2", "label": "Second menu", "default": "footer" }
+  ]
+}
+{% endschema %}
