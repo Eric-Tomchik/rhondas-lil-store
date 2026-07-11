@@ -34,7 +34,8 @@
       --color-primary-dark: {{ settings.color_primary | color_darken: 12 }};
       --color-accent: {{ settings.color_accent }};
       --color-soft: {{ settings.color_soft }};
-      --color-card: #ffffff;
+      --color-card: {{ settings.color_card | default: '#ffffff' }};
+      --color-band: {{ settings.color_band | default: '#0B1220' }};
       --radius: 12px;
       --radius-sm: 8px;
       --shadow: 0 12px 32px rgba(11, 18, 32, 0.09);

@@ -14,31 +14,43 @@
         "type": "color",
         "id": "color_primary",
         "label": "Primary (buttons, links)",
-        "default": "#2E5BFF"
+        "default": "#4D7CFF"
       },
       {
         "type": "color",
         "id": "color_accent",
         "label": "Accent (badges, highlights)",
-        "default": "#BFD0FF"
+        "default": "#6C8CFF"
       },
       {
         "type": "color",
         "id": "color_soft",
         "label": "Soft background tint",
-        "default": "#E9EEF8"
+        "default": "#16223D"
       },
       {
         "type": "color",
         "id": "color_background",
         "label": "Page background",
-        "default": "#F6F8FB"
+        "default": "#0B1220"
       },
       {
         "type": "color",
         "id": "color_text",
         "label": "Text",
-        "default": "#0B1220"
+        "default": "#E7ECF8"
+      },
+      {
+        "type": "color",
+        "id": "color_card",
+        "label": "Card background",
+        "default": "#121C33"
+      },
+      {
+        "type": "color",
+        "id": "color_band",
+        "label": "Dark bands (header bars, footer)",
+        "default": "#070D1C"
       }
     ]
   },
