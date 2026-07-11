@@ -14,31 +14,31 @@
         "type": "color",
         "id": "color_primary",
         "label": "Primary (buttons, links)",
-        "default": "#C4593A"
+        "default": "#2E5BFF"
       },
       {
         "type": "color",
         "id": "color_accent",
         "label": "Accent (badges, highlights)",
-        "default": "#F4C7A1"
+        "default": "#BFD0FF"
       },
       {
         "type": "color",
         "id": "color_soft",
         "label": "Soft background tint",
-        "default": "#F5E9DC"
+        "default": "#E9EEF8"
       },
       {
         "type": "color",
         "id": "color_background",
         "label": "Page background",
-        "default": "#FAF6F0"
+        "default": "#F6F8FB"
       },
       {
         "type": "color",
         "id": "color_text",
         "label": "Text",
-        "default": "#2B2118"
+        "default": "#0B1220"
       }
     ]
   },

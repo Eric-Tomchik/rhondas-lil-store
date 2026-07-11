@@ -1,7 +1,7 @@
 # Rhonda's Lil' Store — Custom Shopify Theme
 
 A fully custom Shopify Online Store 2.0 theme built from scratch for **Rhonda's Lil' Store**.
-Warm boutique aesthetic (cream / terracotta / espresso), conversion-focused layout, and
+Modern, professionally futuristic aesthetic (porcelain white / deep space navy / electric blue), conversion-focused layout, and
 100% compatible with ZenDrop — any product or collection you import shows up automatically.
 
 ## Connecting to Shopify (GitHub integration)
